@@ -1,5 +1,5 @@
 
-Number and name of feature: Class 02
+Number and name of feature: Feature #1: Display images , Feature #2: Allow users to vote for their favorite beast , Feature #3: Bootstrap
 
 Estimate of time needed to complete: 3 hours
 
