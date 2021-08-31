@@ -1,20 +1,29 @@
 import React from 'react';
 import HornedBeasts from './HornedBeasts';
-import Data from './data.json'
-
+import Row from 'react-bootstrap/Row';
 
 class Main extends React.Component {
 
   render() {
     return (
-      <main>{
-        Data.map((animal) => {
-          return (<HornedBeasts title={animal.title}
-            imgSrc={animal.image_url}
-            description={animal.description}
-          />);
-        })
-      }
+      <main>
+        <Row xs={1} md={4} className="g-4">
+          {
+            this.props.HornedData.map((selectedBeastItem) => {
+              return (
+                <HornedBeasts
+                  imageUrl={selectedBeastItem.image_url}
+                  title={selectedBeastItem.title}
+                  description={selectedBeastItem.description}
+                  keyword={selectedBeastItem.keyword}
+                  horns={selectedBeastItem.horns}
+                  displayModal={this.props.displayModal}
+                />
+              )
+            })
+          }
+
+        </Row>
       </main>
     )
   }
