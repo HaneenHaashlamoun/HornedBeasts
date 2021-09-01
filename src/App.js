@@ -5,6 +5,8 @@ import Main from './components/Main';
 import Footer from './components/footer';
 import HornedData from './components/data.json';
 import SelectedBeast from './components/SelectedBeast';
+import HornForm from './components/HornSelectForm';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -14,8 +16,27 @@ class App extends React.Component {
       showModel: false
     }
   }
+  selectedHorns = (event) => {
+    const selectedHornsOption = event.target.value;
+    const hornsSelected = HornedData.filter((item) => {
+      if(selectedHornsOption === 'All'){        
+        console.log('all chosen');
+        return(this.state = {
+          selectedBeast: HornedData,          
+        });                  
+      }
+      else{
+        return (JSON.stringify(item.horns) === selectedHornsOption);
+      }      
+    });
+    console.log(hornsSelected);
+    this.setState({
+      selectedBeast: hornsSelected,
+    })
+  }
+
   displayModal = (title) => {
-    const selectedBeast2 = HornedData.filter((item)  => { 
+    const selectedBeast2 = HornedData.filter((item) => {
       return (item.title === title);
     });
     console.log(selectedBeast2);
@@ -33,7 +54,8 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <Main  HornedData={HornedData} displayModal={this.displayModal}  />
+        <HornForm  selectedHorns={this.selectedHorns} />
+        <Main HornedData={this.state.selectedBeast} displayModal={this.displayModal} />
         <SelectedBeast
           selectedBeast={this.state.selectedBeast}
           show={this.state.showModel}

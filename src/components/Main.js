@@ -17,7 +17,8 @@ class Main extends React.Component {
                   description={selectedBeastItem.description}
                   keyword={selectedBeastItem.keyword}
                   horns={selectedBeastItem.horns}
-                  displayModal={this.props.displayModal}
+                  selectedHorns={this.props.selectedHorns}
+                  displayModal={this.props.displayModal}                  
                 />
               )
             })
