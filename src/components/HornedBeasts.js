@@ -1,20 +1,13 @@
 import React from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
-
-// import Modal from 'react-bootstrap/Modal'
-
-
 class HornedBeasts extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
             like: 0
         }
     }
-
-    incrementNumberOfPets = () => {
+    increaseVotes = () => {
         this.setState({
             like: this.state.like + 1
         })
@@ -27,7 +20,7 @@ class HornedBeasts extends React.Component {
         return (
             <div>
                 <Card style={{ width: '18rem' }} onClick={this.displayModal}>
-                    <Card.Img variant="top" src={this.props.imageUrl} onClick={this.incrementNumberOfPets} />
+                    <Card.Img variant="top" src={this.props.imageUrl} onClick={this.increaseVotes} />
                     <Card.Body>
                         <Card.Title>{this.props.title}</Card.Title>
                         <Card.Text>
@@ -35,6 +28,9 @@ class HornedBeasts extends React.Component {
                         </Card.Text>
                         <Card.Text>
                             {this.props.description}
+                        </Card.Text>
+                        <Card.Text>
+                            horns = {this.props.horns}
                         </Card.Text>
                     </Card.Body>
                 </Card>
